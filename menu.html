@@ -25,25 +25,27 @@
             <div class="col-12 col-md-6 row">
                 <div class="form d-flex flex-column">
                     <h5 class="text-white">ADICIONAR ATIVIDADE</h5>
-                    <div class="form-input">
-                        <input type="text" class="form-input-text" placeholder="Nome da Atividade">
-                        <select name="select-activity" class="form-input-select">
-                            <option selected="true" disabled class="d-none form-input-select-disabled"></option>
-                            <option>Acadêmica</option>
-                            <option>Doméstica</option>
-                            <option>Física</option>
-                            <option>Lazer (Recreativo)</option>
-                        </select>
-                        <div class="row g-2">
-                            <div class="col-12 col-md-8">
-                                <input type="date" class="form-input-date w-100" id="data">
-                            </div>
+                    <form id="formAtividade">
+                        <div class="form-input">
+                            <input type="text" class="form-input-text" placeholder="Nome da Atividade" name="nomeAtividade" required>
+                            <select name="categoria" class="form-input-select" required>
+                                <option selected="true" disabled class="d-none form-input-select-disabled"></option>
+                                <option value="Acadêmica">Acadêmica</option>
+                                <option value="Doméstica">Doméstica</option>
+                                <option value="Física">Física</option>
+                                <option value="Lazer">Lazer (Recreativo)</option>
+                            </select>
+                            <div class="row g-2">
+                                <div class="col-12 col-md-8">
+                                    <input type="date" class="form-input-date w-100" id="data" name="data" required>
+                                </div>
 
-                            <div class="col-12 col-md-4">
-                                <button class="button-save" id="save">Salvar</button>
-                            </div>
-                        </div>                
-                    </div>
+                                <div class="col-12 col-md-4">
+                                    <button class="button-save w-100" type="submit">Salvar</button>
+                                </div>
+                            </div>                
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="col-12 col-md-6">
