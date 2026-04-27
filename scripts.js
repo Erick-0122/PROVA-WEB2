@@ -67,7 +67,7 @@ let graphInstance = null;
                     y: {
                         beginAtZero: true,
                         min: 0,
-                        max: 1,
+                        max: 5,
                         border: {
                             display: false
                         },
@@ -89,10 +89,8 @@ let graphInstance = null;
                         afterBuildTicks: (scale) => {
                             scale.ticks = [
                                 { value: 0 },
-                                { value: 0.25 },
-                                { value: 0.5 },
-                                { value: 0.75 },
-                                { value: 1 }
+                                { value: 1 },
+                                
                             ];
                         }
                     }
@@ -101,76 +99,7 @@ let graphInstance = null;
         });
     }
 
-    new Chart(graph, {
-        type: 'bar',
-        data: {
-            labels: ['Acadêmica', 'Doméstica', 'Física', 'Lazer'],
-            datasets: [{
-                data: ['0.0', '0.5', '1.0'],
-                backgroundColor: [
-                    '#916fa9',
-                    '#a978d7',
-                    '#9169b9',
-                    '#d7aff5'
-                ]
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                x: {
-                    grid: {
-                        display: false,
-                        drawBorder: false
-                    },
-                    border: {
-                        display: false
-                    }
-                },
-                y: {
-                    grid: {
-                        display: true
-                    },
-                    border: {
-                        display: false
-                    },
-                    beginAtZero: true,
-                    min: 0,
-                    max: 1,
-                    ticks: {
-                        callback: function(value) {
-                            if (value === 0 || value === 0.5 || value === 1) {
-                                return value.toFixed(1).replace('.', ',');
-                            }
-                            return '';
-                        }
-                    },
-                    grid: {
-                        color: function(context) {
-                            if (context.tick.value % 0.5 === 0) {
-                                return '#d1d5db';
-                            }
-                            return '#eceff1';
-                        }
-                    },
-                    afterBuildTicks: (scale) => {
-                        scale.ticks = [
-                            { value: 0 },
-                            { value: 0.25 },
-                            { value: 0.5 },
-                            { value: 0.75 },
-                            { value: 1.0 }
-                        ];
-                    }
-                }
-            }
-        }
-    }
-    );
+    
 
     const hoje = new Date().toISOString().split('T')[0];
     document.getElementById('data').setAttribute('min', hoje);
@@ -186,7 +115,7 @@ let graphInstance = null;
     google.charts.setOnLoadCallback(drawMap);
 
 
-    var activities
+    var activities = [];
 
     function AddActivity(nome, tipo, data, status) {
         const atividade = {
