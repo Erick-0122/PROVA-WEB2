@@ -177,7 +177,6 @@ let graphInstance = null;
 
     window.addEventListener('load', () => {
         loadData();
-        atualizarGrafico();
     });
 
     google.charts.load('current', {
@@ -187,7 +186,7 @@ let graphInstance = null;
     google.charts.setOnLoadCallback(drawMap);
 
 
-    let activities = JSON.parse(localStorage.getItem('activities')) || [];
+    var activities
 
     function AddActivity(nome, tipo, data, status) {
         const atividade = {
@@ -235,3 +234,18 @@ let graphInstance = null;
     function loadData() {
         const activities = JSON.parse(localStorage.getItem('activities')) || [];
     }
+
+
+/*
+    Isso dá erro, mas mantenho caso o codigo exploda
+    window.addEventListener('load', () => {
+        loadData();
+    });
+
+    google.charts.load('current', {
+        'packages': ['geochart', 'bar', 'corechart'],
+    });
+
+    google.charts.setOnLoadCallback(drawMap);
+
+*/
