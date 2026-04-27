@@ -74,18 +74,8 @@ const graph = document.getElementById('graphic')
     const hoje = new Date().toISOString().split('T')[0];
     document.getElementById('data').setAttribute('min', hoje);
 
-    window.addEventListener('load', () => {
-        loadData();
-    });
 
-    google.charts.load('current', {
-        'packages': ['geochart', 'bar', 'corechart'],
-    });
-
-    google.charts.setOnLoadCallback(drawMap);
-
-
-    var activities
+    var activities = [];
 
     function AddActivity(nome, tipo, data, status){
         let atividade = {
@@ -107,3 +97,18 @@ const graph = document.getElementById('graphic')
         AddActivity(nome, tipo, data, false);
 
     })
+
+
+/*
+    Isso dá erro, mas mantenho caso o codigo exploda
+    window.addEventListener('load', () => {
+        loadData();
+    });
+
+    google.charts.load('current', {
+        'packages': ['geochart', 'bar', 'corechart'],
+    });
+
+    google.charts.setOnLoadCallback(drawMap);
+
+*/
