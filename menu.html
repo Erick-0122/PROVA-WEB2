@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gerenciador de Atividades</title>
+
+    <link href="styles.css" rel="stylesheet"/>
+
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous"
+    >
+</head>
+
+<body>
+    <nav class="navbar d-flex justify-content-center">
+        GERENCIADOR DE ATIVIDADES
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 row">
+                <div class="form d-flex flex-column">
+                    <h5 class="text-white">ADICIONAR ATIVIDADE</h5>
+                    <div class="form-input">
+                        <input type="text" class="form-input-text" placeholder="Nome da Atividade">
+                        <select name="select-activity" class="form-input-select">
+                            <option selected="true" disabled class="d-none form-input-select-disabled"></option>
+                            <option>Acadêmica</option>
+                            <option>Doméstica</option>
+                            <option>Física</option>
+                            <option>Lazer (Recreativo)</option>
+                        </select>
+                        <div class="row g-2">
+                            <div class="col-12 col-md-8">
+                                <input type="date" class="form-input-date w-100" id="data">
+                            </div>
+
+                            <div class="col-12 col-md-4">
+                                <button class="button-save" id="save">Salvar</button>
+                            </div>
+                        </div>                
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="graph">
+                    <canvas id="graphic">
+
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>        
+
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="box-status">
+                    <h5>PENDENTES: </h5>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="box-status">
+                    <h5>FINALIZADAS: </h5>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="box-status">
+                    <h5>TOTAL: </h5>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="justify-content-center form-search">
+                <h5>FILTRO DE ATIVIDADES</h5>
+                <div class="row g-2">
+                    <div class="col-12 col-md-6">
+                        <select class="form-input-select">
+                            <option selected="true" class="d-none" disabled>Todos os tipos de atividade</option>
+                            <option>Acadêmica</option>
+                            <option>Doméstica</option>
+                            <option>Física</option>
+                            <option>Lazer (Recreativo)</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-input-select d-flex gap-4 align-items-center justify-content-around">
+                            <div>
+                                <input type="checkbox" id="check1">
+                                <label for="check1">Pendentes</label> 
+                            </div>
+                            <div>
+                                <input type="checkbox" id="check1">
+                                <label for="check1">Finalizadas</label> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="box-table">
+                <table>
+                    <tr>
+                        <td class="text-table fw-bold">Atividades</td>
+                        <td class="text-table fw-bold">Classificação</td>
+                        <td class="text-table fw-bold">Data</td>
+                        <td class="text-table fw-bold">Ações</td>
+                    </tr>
+                    <tr>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js" defer></script>
+
+    <script 
+        type="text/javascript" 
+        src="https://www.gstatic.com/charts/loader.js">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous">
+    </script>
+</body>
+</html>
+
