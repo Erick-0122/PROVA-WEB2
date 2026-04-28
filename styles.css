@@ -183,3 +183,12 @@ cursor: pointer;
 text-decoration: none;
 border: none;
 }
+
+table {
+    table-layout: fixed;
+    width: 120%;
+}
+
+td {
+    width: 30%;
+}
