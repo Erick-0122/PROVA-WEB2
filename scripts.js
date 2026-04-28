@@ -218,7 +218,7 @@ let graphInstance = null;
             Filtragem("true")
         }
         else {
-            Filtragem(undefined)
+            LerTable();
         }
 
     }
@@ -228,42 +228,40 @@ let graphInstance = null;
 
         
         table.innerHTML = "";
-        if(activities != undefined){
-            activities
-            .filter(atividade => atividade.status.toString() === status)
-            .forEach((atividade) => {
+        activities
+        .filter(atividade => atividade.status.toString() === status)
+        .forEach((atividade) => {
 
-                const tr = document.createElement("tr");
+            const tr = document.createElement("tr");
 
-                const tdNome = document.createElement("td");
-                const tdTipo = document.createElement("td");
-                const tdData = document.createElement("td");
-                const tdAcoes = document.createElement("td");
+            const tdNome = document.createElement("td");
+            const tdTipo = document.createElement("td");
+            const tdData = document.createElement("td");
+            const tdAcoes = document.createElement("td");
 
-                const btnDelete = document.createElement("button");
-                const btnCheckbox = document.createElement("button");
+            const btnDelete = document.createElement("button");
+            const btnCheckbox = document.createElement("button");
 
-                tdNome.textContent = atividade.nome;
-                tdTipo.textContent = atividade.tipo;
-                tdData.textContent = atividade.data;
+            tdNome.textContent = atividade.nome;
+            tdTipo.textContent = atividade.tipo;
+            tdData.textContent = atividade.data;
+                
+            btnCheckbox.textContent = atividade.status ? "✔️" : "❌";
+
+            btnCheckbox.onclick = () => {
+                atividade.status = !atividade.status;
+                Filtro();
+                Contagem();
+            };
 
                 
-                btnCheckbox.textContent = atividade.status ? "✔️" : "❌";
+            btnDelete.textContent = "🗑️";
 
-                btnCheckbox.onclick = () => {
-                    atividade.status = !atividade.status;
-                    Filtragem(status); 
-                    Contagem();
-                };
-
-                
-                btnDelete.textContent = "🗑️";
-
-                btnDelete.onclick = () => {
-                    activities = activities.filter(a => a.id !== atividade.id);
-                    Filtragem(status);
-                    Contagem();
-                };
+            btnDelete.onclick = () => {
+                activities = activities.filter(a => a.id !== atividade.id);
+                Filtragem(status);
+                Contagem();
+            };
 
                 tdAcoes.appendChild(btnCheckbox);
                 tdAcoes.appendChild(btnDelete);
@@ -274,55 +272,58 @@ let graphInstance = null;
                 tr.appendChild(tdAcoes);
 
                 table.appendChild(tr);
-            });
-        }else{
-            console.log("ativou")
-            activities.forEach((atividade) => {
-
-                const tr = document.createElement("tr");
-
-                const tdNome = document.createElement("td");
-                const tdTipo = document.createElement("td");
-                const tdData = document.createElement("td");
-                const tdAcoes = document.createElement("td");
-
-                const btnDelete = document.createElement("button");
-                const btnCheckbox = document.createElement("button");
-
-                tdNome.textContent = atividade.nome;
-                tdTipo.textContent = atividade.tipo;
-                tdData.textContent = atividade.data;
-
-                
-                btnCheckbox.textContent = atividade.status ? "✔️" : "❌";
-
-                btnCheckbox.onclick = () => {
-                    atividade.status = !atividade.status;
-                    Filtragem(status); 
-                    Contagem();
-                };
-
-                
-                btnDelete.textContent = "🗑️";
-
-                btnDelete.onclick = () => {
-                    activities = activities.filter(a => a.id !== atividade.id);
-                    Filtragem(status);
-                    Contagem();
-                };
-
-                tdAcoes.appendChild(btnCheckbox);
-                tdAcoes.appendChild(btnDelete);
-
-                tr.appendChild(tdNome);
-                tr.appendChild(tdTipo);
-                tr.appendChild(tdData);
-                tr.appendChild(tdAcoes);
-
-                table.appendChild(tr);
-            })
+        });
         
-        }
+    }
+    function LerTable(){
+        const table = document.getElementById("Table");
+
+        
+        table.innerHTML = "";
+        activities
+        .forEach((atividade) => {
+
+            const tr = document.createElement("tr");
+
+            const tdNome = document.createElement("td");
+            const tdTipo = document.createElement("td");
+            const tdData = document.createElement("td");
+            const tdAcoes = document.createElement("td");
+
+            const btnDelete = document.createElement("button");
+            const btnCheckbox = document.createElement("button");
+
+            tdNome.textContent = atividade.nome;
+            tdTipo.textContent = atividade.tipo;
+            tdData.textContent = atividade.data;
+                
+            btnCheckbox.textContent = atividade.status ? "✔️" : "❌";
+
+            btnCheckbox.onclick = () => {
+                atividade.status = !atividade.status;
+                Filtragem(status); 
+                    Contagem();
+            };
+
+                
+            btnDelete.textContent = "🗑️";
+
+            btnDelete.onclick = () => {
+                activities = activities.filter(a => a.id !== atividade.id);
+                Filtragem(status);
+                Contagem();
+            };
+
+                tdAcoes.appendChild(btnCheckbox);
+                tdAcoes.appendChild(btnDelete);
+
+                tr.appendChild(tdNome);
+                tr.appendChild(tdTipo);
+                tr.appendChild(tdData);
+                tr.appendChild(tdAcoes);
+
+                table.appendChild(tr);
+        });
     }
 
     document.getElementById('formAtividade').addEventListener('submit', function (e) {
